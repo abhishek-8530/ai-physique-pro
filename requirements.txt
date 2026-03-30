@@ -8,3 +8,4 @@ torchvision
 scikit-learn
 faiss-cpu
 requests
+opencv-python-headless
