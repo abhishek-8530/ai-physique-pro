@@ -1,0 +1,105 @@
+# 💪 AI Physique Analyzer
+
+An AI-powered web application that analyzes body physique from an image and provides personalized workout recommendations using deep learning and similarity search.
+
+---
+
+## 🚀 Features
+
+- 🧠 Body Type Classification (Ectomorph, Mesomorph, Endomorph)
+- 🖼 Image-based analysis using CNN (ResNet)
+- 🔍 Similar Physique Search using Embeddings
+- 🏋️ Personalized Workout Recommendations
+- ⚡ FastAPI Backend
+- 🎯 Streamlit Frontend
+- 🔗 End-to-End ML Pipeline
+
+---
+
+## 🏗️ Tech Stack
+
+- **Backend:** FastAPI
+- **Frontend:** Streamlit
+- **ML/DL:** PyTorch, Torchvision
+- **Similarity Search:** FAISS
+- **Image Processing:** Pillow
+- **API Communication:** Requests
+
+---
+
+## 📁 Project Structure
+ai-physique-pro/
+│
+├── backend/
+│ ├── main.py
+│ ├── inference.py
+│ ├── similarity.py
+│ ├── recommender.py
+│ ├── train.py
+│ ├── generate_embeddings.py
+│ ├── model.pth
+│ ├── embeddings.npy
+│
+├── frontend/
+│ ├── app.py
+│
+├── dataset/
+│ ├── ectomorph/
+│ ├── mesomorph/
+│ ├── endomorph/
+│
+├── requirements.txt
+└── README.md
+
+
+
+## ⚙️ Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/your-username/ai-physique-pro.git
+cd ai-physique-pro
+
+2. Create virtual environment
+python -m venv venv
+venv\Scripts\activate   # Windows
+
+3. Install dependencies
+pip install -r requirements.txt
+🧠 Train Model
+python backend/train.py
+🔍 Generate Embeddings
+python backend/generate_embeddings.py
+🚀 Run Backend
+uvicorn backend.main:app --reload
+
+API Docs:
+http://127.0.0.1:8000/docs
+
+🎯 Run Frontend
+streamlit run frontend/app.py
+
+App URL:
+http://localhost:8501
+
+📸 Usage
+Upload a body image
+Click Analyze
+
+Get:
+Body Type
+Workout Plan
+Similar Physiques
+
+⚠️ Notes
+If model is not trained, system will use random predictions
+Ensure model.pth and embeddings.npy exist for full functionality
+
+🌟 Future Improvements
+Pose detection (MediaPipe)
+Nutrition recommendation system
+User progress tracking
+
+👩‍💻 Author
+ABHISHEK KASNALE
+
