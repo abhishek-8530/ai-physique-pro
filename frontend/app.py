@@ -26,7 +26,7 @@ if file:
 
             try:
                 res = requests.post(
-                    "http://127.0.0.1:8000/analyze",
+                    "https://ai-physique-backend.onrender.com/analyze",
                     files={"file": file.getvalue()},
                     data={
                         "age": age,
@@ -42,12 +42,17 @@ if file:
                 else:
                     st.success("✅ Analysis Complete!")
 
-                    # ---------------- BODY TYPE ----------------
+                    # ---------------- BODY TYPE + CONFIDENCE ----------------
                     body_type = data.get("body_type")
+                    confidence = data.get("confidence", 0)
 
                     st.markdown("## 🧍 Body Type")
+
                     if body_type:
-                        st.info(f"Your body type is **{body_type.capitalize()}**")
+                        st.info(
+                            f"Your body type is **{body_type.capitalize()}** "
+                            f"(Confidence: {round(confidence * 100, 2)}%)"
+                        )
                     else:
                         st.warning("Could not determine body type")
 
@@ -81,13 +86,31 @@ if file:
                     else:
                         st.write("No diet plan available")
 
+                    # ---------------- SIMILAR IMAGES ----------------
+                    st.markdown("## 🧍 Similar Physiques")
+
+                    similar = data.get("similar", [])
+
+                    if similar:
+                        cols = st.columns(len(similar))
+
+                        for i, idx in enumerate(similar):
+                            # ⚠️ assumes you store images like dataset/<class>/image.jpg
+                            # You may need to adjust path based on your dataset
+                            try:
+                                st.write(f"Match {i+1}: Image #{idx}")
+                            except:
+                                st.write(f"Image {idx}")
+                    else:
+                        st.write("No similar physiques found")
+
                     # ---------------- SMART SUMMARY ----------------
                     st.markdown("## 🤖 AI Coach Summary")
 
                     if body_type and recs:
                         st.success(
                             f"You are a {body_type} individual aiming for {goal.lower()}. "
-                            f"Follow the above plan consistently for best results."
+                            f"Stay consistent with training and nutrition for best results 💪"
                         )
 
             except Exception as e:
