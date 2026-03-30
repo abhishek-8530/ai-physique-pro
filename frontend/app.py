@@ -26,7 +26,7 @@ if file:
 
             try:
                 res = requests.post(
-                    "https://ai-physique-backend.onrender.com/analyze",
+                    "https://ai-physique-pro.onrender.com/analyze",
                     files={"file": file.getvalue()},
                     data={
                         "age": age,
